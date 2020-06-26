@@ -1,4 +1,6 @@
-src/
-.eslintrc
-.babelrc
-test/
+.eslintignore
+.gitattributes
+.eslintrc.js
+tests/
+.vscode/
+coverage/
