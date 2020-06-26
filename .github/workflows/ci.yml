@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-    name: CI - node ${{ matrix.node-version }}
+    name: test - node ${{ matrix.node-version }}
     steps:
     - uses: actions/checkout@v1
     - name: set node.js ${{ matrix.node-version }}
