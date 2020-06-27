@@ -9,22 +9,20 @@ import {
   Config,
   onEndSearchPackage,
   onSearchPackage,
-  onValidatePackage
+  onValidatePackage,
 } from '@verdaccio/types';
+
+import { StorageProxyConfig } from '../types/index';
 
 import loadPlugin from './plugin-loader';
 import { getBackend } from './helper';
-import { StorageProxyConfig } from '../types/index';
 import PackageStorage from './PackageStorage';
 
 export default class VerdaccioStoragePlugin implements IPluginStorage<StorageProxyConfig> {
   config: StorageProxyConfig & Config;
   version?: string;
   public logger: Logger;
-  public constructor(
-    config: StorageProxyConfig,
-    options: PluginOptions<StorageProxyConfig>
-  ) {
+  public constructor(config: StorageProxyConfig, options: PluginOptions<StorageProxyConfig>) {
     this.config = config;
     this.logger = options.logger;
     // load backends.
@@ -40,11 +38,13 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
         this.logger,
         pluginId,
         pluginConfig,
-        plugin_params, (plugin): IPluginStorage<Config> => {
-        return plugin.getPackageStorage;
-      });
+        plugin_params,
+        (plugin): IPluginStorage<Config> => {
+          return plugin.getPackageStorage;
+        }
+      );
       this.config.loaded_backends[pluginId] = plugin;
-    })
+    });
   }
 
   public async getSecret(): Promise<string> {
@@ -62,11 +62,7 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
     return backend.remove(name, callback);
   }
 
-  public search(
-    onPackage: onSearchPackage,
-    onEnd: onEndSearchPackage,
-    validateName: onValidatePackage
-  ): void {
+  public search(onPackage: onSearchPackage, onEnd: onEndSearchPackage, validateName: onValidatePackage): void {
     const backend = getBackend(this.config, this.config.packument_backend);
     return backend.search(onPackage, onEnd, validateName);
   }

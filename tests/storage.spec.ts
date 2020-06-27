@@ -27,15 +27,11 @@ describe('verdaccio-storage-proxy', () => {
   // storage test
 
   describe('verdaccio-storage-proxy', () => {
-
     describe('dummy:group', () => {
-
       test('should work', (done: jest.DoneCallback) => {
-        expect("test").toBe("test");
+        expect('test').toBe('test');
         done();
       });
-
     });
-
   });
 });

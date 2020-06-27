@@ -1,20 +1,18 @@
 import {
-  Callback,
   Logger,
   ILocalPackageManager,
-  IPackageStorage,
   StorageUpdateCallback,
   PackageTransformer,
   StorageWriteCallback,
   CallbackAction,
   Package,
-  ReadPackageCallback
-} from "@verdaccio/types";
-import { UploadTarball, ReadTarball } from "@verdaccio/streams";
-import { getNotFound, getConflict, getInternalError } from '@verdaccio/commons-api';
+  ReadPackageCallback,
+} from '@verdaccio/types';
+import { UploadTarball, ReadTarball } from '@verdaccio/streams';
+
+import { StorageProxyConfig } from '../types/index';
 
 import { getBackend } from './helper';
-import { StorageProxyConfig } from "../types/index";
 
 export default class StoragePluginManage implements ILocalPackageManager {
   public logger: Logger;
@@ -23,11 +21,7 @@ export default class StoragePluginManage implements ILocalPackageManager {
   private packumentPackageStorage: ILocalPackageManager;
   private tarballPackageStorage: ILocalPackageManager;
 
-  public constructor(
-    config: StorageProxyConfig,
-    packageName: string,
-    logger: Logger
-  ) {
+  public constructor(config: StorageProxyConfig, packageName: string, logger: Logger) {
     this.logger = logger;
     this.packageName = packageName;
     this.config = config;
@@ -55,11 +49,7 @@ export default class StoragePluginManage implements ILocalPackageManager {
     return this.packumentPackageStorage.removePackage(callback);
   }
 
-  public createPackage(
-    name: string,
-    data: Package,
-    callback: CallbackAction
-  ): void {
+  public createPackage(name: string, data: Package, callback: CallbackAction): void {
     return this.packumentPackageStorage.createPackage(name, data, callback);
   }
 

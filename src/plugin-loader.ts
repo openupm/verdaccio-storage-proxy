@@ -1,9 +1,9 @@
 import Path from 'path';
+
 import _ from 'lodash';
 import { Config, Logger, IPlugin } from '@verdaccio/types';
 
 const MODULE_NOT_FOUND = 'MODULE_NOT_FOUND';
-
 
 /**
  * Requires a module.
@@ -55,7 +55,7 @@ export default function loadPlugin<T extends IPlugin<T>>(
   pluginConfig: any = {},
   params: any,
   sanityCheck: any,
-  prefix: string = 'verdaccio'
+  prefix = 'verdaccio'
 ): any {
   let plugin;
 
@@ -104,17 +104,19 @@ export default function loadPlugin<T extends IPlugin<T>>(
   }
 
   if (!isValid(plugin)) {
-    logger.error({ content: pluginId }, "@{prefix}-@{content} plugin does not have the right code structure");
+    logger.error({ content: pluginId }, '@{prefix}-@{content} plugin does not have the right code structure');
     throw Error(`"${pluginId}" plugin does not have the right code structure`);
   }
 
   /* eslint new-cap:off */
-    try {
-        plugin = isES6(plugin) ? new plugin.default(mergeConfig(config, pluginConfig), params) : plugin(pluginConfig, params);
-    } catch (error) {
-        plugin = null;
-        logger.error({ error, pluginId }, "error loading a plugin @{pluginId}: @{error}");
-    }
+  try {
+    plugin = isES6(plugin)
+      ? new plugin.default(mergeConfig(config, pluginConfig), params)
+      : plugin(pluginConfig, params);
+  } catch (error) {
+    plugin = null;
+    logger.error({ error, pluginId }, 'error loading a plugin @{pluginId}: @{error}');
+  }
   /* eslint new-cap:off */
 
   if (plugin === null || !sanityCheck(plugin)) {
