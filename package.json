@@ -24,6 +24,7 @@
     "@verdaccio/babel-preset": "^8.5.0",
     "@verdaccio/eslint-config": "^8.5.0",
     "@verdaccio/types": "^8.5.2",
+    "cross-env": "^7.0.2",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
@@ -40,7 +41,7 @@
     "build": "npm run build:types && npm run build:js",
     "build:js": "babel src/ --out-dir lib --extensions \".ts,.tsx\"",
     "build:types": "tsc --emitDeclarationOnly",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest",
     "lint": "eslint \"**/*.{js,ts}\""
   }
 }
