@@ -1,3 +1,10 @@
+## [0.0.4](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.3...0.0.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* no longer store loaded backends into config object ([ea281c0](https://github.com/openupm/verdaccio-storage-proxy/commit/ea281c088aa8086130a58cbe320e3613306a2f06))
+
 ## [0.0.3](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.2...0.0.3) (2020-06-27)
 
 
