@@ -21,13 +21,13 @@ export default class StoragePluginManage implements ILocalPackageManager {
   private packumentPackageStorage: ILocalPackageManager;
   private tarballPackageStorage: ILocalPackageManager;
 
-  public constructor(config: StorageProxyConfig, packageName: string, logger: Logger) {
+  public constructor(config: StorageProxyConfig, packageName: string, logger: Logger, loadedBackends: any) {
     this.logger = logger;
     this.packageName = packageName;
     this.config = config;
-    const packumentBackend = getBackend(this.config, this.config.packument_backend);
+    const packumentBackend = getBackend(loadedBackends, this.config.packument_backend);
     this.packumentPackageStorage = packumentBackend.getPackageStorage(packageName) as ILocalPackageManager;
-    const tarballBackend = getBackend(this.config, this.config.tarball_backend);
+    const tarballBackend = getBackend(loadedBackends, this.config.tarball_backend);
     this.tarballPackageStorage = tarballBackend.getPackageStorage(packageName) as ILocalPackageManager;
   }
 

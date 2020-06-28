@@ -9,6 +9,4 @@ export interface StorageProxyConfig extends Config {
   tarball_backend: string;
   // The object to hold configurations of backend storages.
   backends: any;
-  // The object to hold loaded backend storages.
-  loaded_backends?: any;
 }

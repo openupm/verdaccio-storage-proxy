@@ -22,11 +22,14 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
   config: StorageProxyConfig & Config;
   version?: string;
   public logger: Logger;
+  // The object to hold loaded backend storages.
+  private loadedBackends: any;
+
   public constructor(config: StorageProxyConfig, options: PluginOptions<StorageProxyConfig>) {
     this.config = config;
     this.logger = options.logger;
     // load backends.
-    this.config.loaded_backends = {};
+    this.loadedBackends = {};
     Object.keys(this.config.backends).forEach(pluginId => {
       const pluginConfig = this.config.backends[pluginId];
       const plugin_params = {
@@ -43,37 +46,37 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
           return plugin.getPackageStorage;
         }
       );
-      this.config.loaded_backends[pluginId] = plugin;
+      this.loadedBackends[pluginId] = plugin;
     });
   }
 
   public async getSecret(): Promise<string> {
-    const backend = getBackend(this.config, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
     return backend.getSecret();
   }
 
   public async setSecret(secret: string): Promise<any> {
-    const backend = getBackend(this.config, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
     return backend.setSecret(secret);
   }
 
   public add(name: string, callback: Callback): void {
-    const backend = getBackend(this.config, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
     return backend.remove(name, callback);
   }
 
   public search(onPackage: onSearchPackage, onEnd: onEndSearchPackage, validateName: onValidatePackage): void {
-    const backend = getBackend(this.config, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
     return backend.search(onPackage, onEnd, validateName);
   }
 
   public remove(name: string, callback: Callback): void {
-    const backend = getBackend(this.config, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
     return backend.remove(name, callback);
   }
 
   public get(callback: Callback): void {
-    const backend = getBackend(this.config, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
     return backend.get(callback);
   }
 
@@ -82,21 +85,21 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
    * @param packageInfo
    */
   public getPackageStorage(packageInfo: string): IPackageStorage {
-    return new PackageStorage(this.config, packageInfo, this.logger);
+    return new PackageStorage(this.config, packageInfo, this.logger, this.loadedBackends);
   }
 
   public saveToken(token: Token): Promise<any> {
-    const backend = getBackend(this.config, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
     return backend.saveToken(token);
   }
 
   public deleteToken(user: string, tokenKey: string): Promise<any> {
-    const backend = getBackend(this.config, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
     return backend.deleteToken(user, tokenKey);
   }
 
   public readTokens(filter: TokenFilter): Promise<Token[]> {
-    const backend = getBackend(this.config, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
     return backend.readTokens(filter);
   }
 }
