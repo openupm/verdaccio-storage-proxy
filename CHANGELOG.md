@@ -1,3 +1,10 @@
+## [0.0.5](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.4...0.0.5) (2020-06-28)
+
+
+### Bug Fixes
+
+* re-classify access types ([00bccf1](https://github.com/openupm/verdaccio-storage-proxy/commit/00bccf197350d7e372d9d9f251783d17e64ddb3b))
+
 ## [0.0.4](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.3...0.0.4) (2020-06-28)
 
 
