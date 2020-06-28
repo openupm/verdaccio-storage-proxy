@@ -51,32 +51,32 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
   }
 
   public async getSecret(): Promise<string> {
-    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.getSecret();
   }
 
   public async setSecret(secret: string): Promise<any> {
-    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.setSecret(secret);
   }
 
   public add(name: string, callback: Callback): void {
-    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.remove(name, callback);
   }
 
   public search(onPackage: onSearchPackage, onEnd: onEndSearchPackage, validateName: onValidatePackage): void {
-    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.search_backend);
     return backend.search(onPackage, onEnd, validateName);
   }
 
   public remove(name: string, callback: Callback): void {
-    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.remove(name, callback);
   }
 
   public get(callback: Callback): void {
-    const backend = getBackend(this.loadedBackends, this.config.packument_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.get(callback);
   }
 
@@ -89,17 +89,17 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
   }
 
   public saveToken(token: Token): Promise<any> {
-    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.saveToken(token);
   }
 
   public deleteToken(user: string, tokenKey: string): Promise<any> {
-    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.deleteToken(user, tokenKey);
   }
 
   public readTokens(filter: TokenFilter): Promise<Token[]> {
-    const backend = getBackend(this.loadedBackends, this.config.meta_backend);
+    const backend = getBackend(this.loadedBackends, this.config.database_backend);
     return backend.readTokens(filter);
   }
 }

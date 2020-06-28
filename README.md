@@ -1,13 +1,18 @@
 # verdaccio-storage-proxy
 
-A verdaccio storage proxy to decouple meta, packument, and tarball accesses.
+A verdaccio storage proxy to decouple database, search, packument, and tarball accesses.
 
-E.g. using the aws-s3-storage for tarball accesses, then using database storage for meta and packument accesses to create robust mixed storage for a cluster environment.
+E.g. using the aws-s3-storage for tarball accesses, then using database storage for the rest accesses to create robust mixed storage for a cluster environment.
 
 Access types:
-- meta: accesses related to security and token.
-- packument: accesses related to add, create, delete, update, and read a packument.
-- tarball: accesses related to read and write a tarball.
+- database: accesses related to package CRD, security, and token.
+- search: accesses related to search.
+- packument: accesses related to packument CRUD.
+- tarball: accesses related to tarball read and write.
+
+Tasks
+- [x] dispatch accesses by type
+- [ ] unit test
 
 ## Installation
 
@@ -20,8 +25,9 @@ npm install verdaccio-storage-proxy
 ```yaml
 store:
   storage-proxy:
-    meta_backend: dummy-storage
-    packument_backend: dummy-storage
+    database_backend: redis-storage
+    search_backend: redis-storage
+    packument_backend: redis-storage
     tarball_backend: aws-s3-storage
     backends:
       aws-s3-storage:
@@ -33,9 +39,12 @@ store:
         s3ForcePathStyle: true
         keyPrefix: 'verdaccio/'
         tarballACL: public-read
-      dummy-storage:
+      redis-storage:
+        host: 127.0.0.1
         ...
 ```
+
+The example configuration dispatches tarball accesses to aws-s3-storage and the rest to redis-storage.
 
 ## Development
 
