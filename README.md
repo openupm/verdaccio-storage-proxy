@@ -1,5 +1,7 @@
 # verdaccio-storage-proxy
 
+![npm](https://img.shields.io/npm/v/verdaccio-storage-proxy) ![NPM](https://img.shields.io/npm/l/verdaccio-storage-proxy) ![npm](https://img.shields.io/npm/dm/verdaccio-storage-proxy)
+
 A verdaccio storage proxy to decouple database, search, packument, and tarball accesses.
 
 E.g. using the aws-s3-storage for tarball accesses, then using database storage for the rest accesses to create robust mixed storage for a cluster environment.
@@ -44,7 +46,7 @@ store:
         ...
 ```
 
-The example configuration dispatches tarball accesses to aws-s3-storage and the rest to redis-storage.
+The example configuration dispatches tarball accesses to aws-s3-storage and the rest to [verdaccio-redis-storage](https://github.com/openupm/verdaccio-redis-storage).
 
 ## Development
 
