@@ -19,8 +19,8 @@ import { getBackend } from './helper';
 import PackageStorage from './PackageStorage';
 
 export default class VerdaccioStoragePlugin implements IPluginStorage<StorageProxyConfig> {
-  config: StorageProxyConfig & Config;
-  version?: string;
+  public config: StorageProxyConfig & Config;
+  public version?: string;
   public logger: Logger;
   // The object to hold loaded backend storages.
   private loadedBackends: any;
@@ -62,7 +62,7 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
 
   public add(name: string, callback: Callback): void {
     const backend = getBackend(this.loadedBackends, this.config.database_backend);
-    return backend.remove(name, callback);
+    return backend.add(name, callback);
   }
 
   public search(onPackage: onSearchPackage, onEnd: onEndSearchPackage, validateName: onValidatePackage): void {
