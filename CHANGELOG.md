@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.5...0.0.6) (2020-07-04)
+
+
+### Bug Fixes
+
+* add API doesn't work. ([d5a0e80](https://github.com/openupm/verdaccio-storage-proxy/commit/d5a0e8018a36324db35daeb7f475ca300c257ed7))
+
 ## [0.0.5](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.4...0.0.5) (2020-06-28)
 
 
