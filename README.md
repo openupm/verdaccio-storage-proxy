@@ -12,10 +12,6 @@ Access types:
 - packument: accesses related to packument CRUD.
 - tarball: accesses related to tarball read and write.
 
-Tasks
-- [x] dispatch accesses by type
-- [ ] unit test
-
 ## Installation
 
 ```bash

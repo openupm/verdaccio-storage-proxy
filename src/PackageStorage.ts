@@ -14,12 +14,12 @@ import { StorageProxyConfig } from '../types/index';
 
 import { getBackend } from './helper';
 
-export default class StoragePluginManage implements ILocalPackageManager {
+export default class StoragePluginManager implements ILocalPackageManager {
   public logger: Logger;
   public packageName: string;
   public config: StorageProxyConfig;
-  private packumentPackageStorage: ILocalPackageManager;
-  private tarballPackageStorage: ILocalPackageManager;
+  public packumentPackageStorage: ILocalPackageManager;
+  public tarballPackageStorage: ILocalPackageManager;
 
   public constructor(config: StorageProxyConfig, packageName: string, logger: Logger, loadedBackends: any) {
     this.logger = logger;
