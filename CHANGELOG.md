@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.6...0.0.7) (2020-07-11)
+
+
+### Bug Fixes
+
+* unit test ([1b4cf85](https://github.com/openupm/verdaccio-storage-proxy/commit/1b4cf8526730b3d5dbdc9e43c850269dceee6491))
+
 ## [0.0.6](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.5...0.0.6) (2020-07-04)
 
 
