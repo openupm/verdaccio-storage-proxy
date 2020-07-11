@@ -1,6 +1,5 @@
 import { Token } from '@verdaccio/types';
 
-import { StorageProxyConfig } from '../types';
 import VerdaccioStoragePlugin from '../src/plugin';
 import StoragePluginManager from '../src/PackageStorage';
 
@@ -9,7 +8,7 @@ import logger from './mocks/logger';
 import { pkg1 } from './mocks/pkgs';
 
 describe('verdaccio-storage-proxy', () => {
-  let plugin: StorageProxyConfig = null;
+  let plugin: VerdaccioStoragePlugin = null;
   let packageStorage: StoragePluginManager = null;
 
   beforeEach(() => {
@@ -48,7 +47,7 @@ describe('verdaccio-storage-proxy', () => {
     );
     const defaultConfig = { logger, config: null };
     plugin = new VerdaccioStoragePlugin(config, defaultConfig);
-    packageStorage = plugin.getPackageStorage('pkg1');
+    packageStorage = plugin.getPackageStorage('pkg1') as StoragePluginManager;
   });
 
   afterEach(async () => {
@@ -90,8 +89,9 @@ describe('verdaccio-storage-proxy', () => {
       expect(plugin.loadedBackends['dummy-storage'].remove).toHaveBeenCalledWith('pkg1', callback);
     });
     test('get', () => {
-      plugin.get();
-      expect(plugin.loadedBackends['dummy-storage'].get).toBeCalled();
+      const callback = jest.fn();
+      plugin.get(callback);
+      expect(plugin.loadedBackends['dummy-storage'].get).toHaveBeenCalledWith(callback);
     });
     test('search', () => {
       const callback1 = jest.fn();
@@ -150,10 +150,6 @@ describe('verdaccio-storage-proxy', () => {
       const cb = jest.fn();
       packageStorage.removePackage(cb);
       expect(packageStorage.packumentPackageStorage.removePackage).toHaveBeenCalledWith(cb);
-    });
-    test('removePackage', () => {
-      packageStorage.removePackage('pkg1');
-      expect(packageStorage.packumentPackageStorage.removePackage).toHaveBeenCalledWith('pkg1');
     });
     test('deletePackage', () => {
       const cb = jest.fn();

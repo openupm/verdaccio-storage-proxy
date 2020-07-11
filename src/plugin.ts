@@ -23,7 +23,7 @@ export default class VerdaccioStoragePlugin implements IPluginStorage<StoragePro
   public version?: string;
   public logger: Logger;
   // The object to hold loaded backend storages.
-  private loadedBackends: any;
+  public loadedBackends: any;
 
   public constructor(config: StorageProxyConfig, options: PluginOptions<StorageProxyConfig>) {
     this.config = config;
