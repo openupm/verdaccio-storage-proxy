@@ -5,3 +5,4 @@ tests/
 .vscode/
 coverage/
 .github/
+!lib/*
