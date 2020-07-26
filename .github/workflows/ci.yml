@@ -28,6 +28,10 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v1
+    - name: npm install
+      run: npm install
+    - name: npm run build
+      run: npm run build
     - name: Release
       uses: cycjimmy/semantic-release-action@v2
       with:
