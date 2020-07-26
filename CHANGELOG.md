@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.8...0.0.9) (2020-07-26)
+
+
+### Bug Fixes
+
+* **ci:** build before bundle ([0ea1c5e](https://github.com/openupm/verdaccio-storage-proxy/commit/0ea1c5e9104bf66e555f5362cc02dc5e3e7fa2f0))
+
 ## [0.0.8](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.7...0.0.8) (2020-07-26)
 
 
