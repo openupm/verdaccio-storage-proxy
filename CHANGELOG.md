@@ -1,3 +1,10 @@
+## [0.0.8](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.7...0.0.8) (2020-07-26)
+
+
+### Bug Fixes
+
+* lib folder is ignored in the package dist ([ef79c45](https://github.com/openupm/verdaccio-storage-proxy/commit/ef79c45c1a010ac3fb4bb1260036294099cbd34a))
+
 ## [0.0.7](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.6...0.0.7) (2020-07-11)
 
 
