@@ -1,3 +1,10 @@
+## [0.0.10](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.9...0.0.10) (2022-03-01)
+
+
+### Bug Fixes
+
+* remove tarballs on package removal ([f0065b1](https://github.com/openupm/verdaccio-storage-proxy/commit/f0065b1206296b69c0878e4b83a75c6d6ca66199))
+
 ## [0.0.9](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.8...0.0.9) (2020-07-26)
 
 
