@@ -1,4 +1,7 @@
 # verdaccio-storage-proxy
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![npm](https://img.shields.io/npm/v/verdaccio-storage-proxy) ![NPM](https://img.shields.io/npm/l/verdaccio-storage-proxy) ![npm](https://img.shields.io/npm/dm/verdaccio-storage-proxy)
 
@@ -58,3 +61,23 @@ Once you have completed that, use the following npm tasks.
     Run unit test
 
 For more information about any of these commands run `npm run ${task} -- --help`.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://littlebigfun.com"><img src="https://avatars.githubusercontent.com/u/125390?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Favo Yang</b></sub></a><br /><a href="https://github.com/openupm/verdaccio-storage-proxy/commits?author=favoyang" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
