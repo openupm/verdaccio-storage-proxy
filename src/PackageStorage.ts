@@ -42,11 +42,17 @@ export default class StoragePluginManager implements ILocalPackageManager {
   }
 
   public deletePackage(fileName: string, callback: CallbackAction): void {
+    if (fileName.toLowerCase().endsWith('.tgz')) {
+      return this.tarballPackageStorage.deletePackage(fileName, callback);
+    }
+
     return this.packumentPackageStorage.deletePackage(fileName, callback);
   }
 
   public removePackage(callback: CallbackAction): void {
-    return this.packumentPackageStorage.removePackage(callback);
+    return this.packumentPackageStorage.removePackage(() => {
+      this.tarballPackageStorage.removePackage(callback);
+    });
   }
 
   public createPackage(name: string, data: Package, callback: CallbackAction): void {

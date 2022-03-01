@@ -149,7 +149,7 @@ describe('verdaccio-storage-proxy', () => {
     test('removePackage', () => {
       const cb = jest.fn();
       packageStorage.removePackage(cb);
-      expect(packageStorage.packumentPackageStorage.removePackage).toHaveBeenCalledWith(cb);
+      expect(packageStorage.packumentPackageStorage.removePackage).toHaveBeenCalled();
     });
     test('deletePackage', () => {
       const cb = jest.fn();
