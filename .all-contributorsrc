@@ -13,6 +13,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "xarety",
+      "name": "Denis Gordeev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17852627?v=4",
+      "profile": "https://github.com/xarety",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
