@@ -2,6 +2,7 @@ import Path from 'path';
 
 import _ from 'lodash';
 import { Config, Logger, IPlugin } from '@verdaccio/types';
+import { wrapError } from './helper';
 
 const MODULE_NOT_FOUND = 'MODULE_NOT_FOUND';
 
@@ -14,9 +15,9 @@ function tryLoad(path: string): any {
   try {
     return require(path);
   } catch (err) {
-    if (err.code === MODULE_NOT_FOUND) {
+    const error = wrapError(err);
+    if (error.code === MODULE_NOT_FOUND)
       return null;
-    }
     throw err;
   }
 }
