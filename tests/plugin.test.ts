@@ -8,8 +8,8 @@ import logger from './mocks/logger';
 import { pkg1 } from './mocks/pkgs';
 
 describe('verdaccio-storage-proxy', () => {
-  let plugin: VerdaccioStoragePlugin = null;
-  let packageStorage: StoragePluginManager = null;
+  let plugin: VerdaccioStoragePlugin;
+  let packageStorage: StoragePluginManager;
 
   beforeEach(() => {
     jest.mock(
@@ -45,7 +45,7 @@ describe('verdaccio-storage-proxy', () => {
       },
       { virtual: true }
     );
-    const defaultConfig = { logger, config: null };
+    const defaultConfig = { logger, config };
     plugin = new VerdaccioStoragePlugin(config, defaultConfig);
     packageStorage = plugin.getPackageStorage('pkg1') as StoragePluginManager;
   });
