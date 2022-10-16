@@ -1,3 +1,12 @@
+## [0.0.11](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.10...0.0.11) (2022-10-16)
+
+
+### Bug Fixes
+
+* compile error in wrapError ([b16170d](https://github.com/openupm/verdaccio-storage-proxy/commit/b16170d270ec43755f5f0843dff82a721584bfd8))
+* require node v14 ([b7e54ea](https://github.com/openupm/verdaccio-storage-proxy/commit/b7e54ea19c4924258930d9a5a40f71e21a2cedbc))
+* unit test ([a4b2b4e](https://github.com/openupm/verdaccio-storage-proxy/commit/a4b2b4ece70be2750fd209e6ac5d26af00024793))
+
 ## [0.0.10](https://github.com/openupm/verdaccio-storage-proxy/compare/0.0.9...0.0.10) (2022-03-01)
 
 

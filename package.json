@@ -1,6 +1,6 @@
 {
   "name": "verdaccio-storage-proxy",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A verdaccio storage proxy to decouple database, search, packument, and tarball accesses.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
