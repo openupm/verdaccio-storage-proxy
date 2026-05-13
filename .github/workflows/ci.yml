@@ -26,19 +26,38 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v5
+    - name: set node.js 24
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
+    - name: Use npm with trusted publishing support
+      run: npm install -g npm@11.13.0
+    - name: Show release tool versions
+      run: |
+        node --version
+        npm --version
+        npm config get registry
     - name: npm install
       run: npm install
     - name: npm run build
       run: npm run build
     - name: Release
-      uses: cycjimmy/semantic-release-action@v2
+      uses: cycjimmy/semantic-release-action@v6
       with:
+        semantic_version: 25.0.3
         extra_plugins: |
-          @semantic-release/changelog
-          @semantic-release/git
-        branch: master
+          @semantic-release/npm@13.1.5
+          @semantic-release/changelog@6.0.3
+          @semantic-release/git@10.0.1
+        branches: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        DEBUG: semantic-release:*,@semantic-release/npm:*
+        NPM_CONFIG_LOGLEVEL: verbose

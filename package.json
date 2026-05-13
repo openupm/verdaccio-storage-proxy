@@ -15,8 +15,6 @@
     "@verdaccio/streams": "^10.2.0"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/git": "^10.0.1",
     "@types/express": "^4.17.14",
     "@types/jest": "^29.1.2",
     "@types/node": "^18.11.0",
@@ -28,14 +26,16 @@
     "eslint": "^6.6.0",
     "jest": "^29.2.0",
     "prettier": "^2.7.1",
-    "semantic-release": "^19.0.5",
     "typescript": "^4.8.4"
   },
   "keywords": [
     "verdaccio-storage-proxy"
   ],
   "license": "BSD-3-Clause",
-  "repository": "https://github.com/openupm/verdaccio-storage-proxy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openupm/verdaccio-storage-proxy.git"
+  },
   "author": "Favo Yang <https://github.com/favoyang>",
   "scripts": {
     "build": "npm run build:types && npm run build:js",
