@@ -53,8 +53,8 @@ jobs:
       with:
         extra_plugins: |
           @semantic-release/npm@13.1.5
-          @semantic-release/changelog
-          @semantic-release/git
+          @semantic-release/changelog@6.0.3
+          @semantic-release/git@10.0.1
         branches: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
